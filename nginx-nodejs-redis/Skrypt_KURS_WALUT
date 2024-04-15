@@ -1,0 +1,19 @@
+// Przykładowy skrypt JavaScript do odświeżania kursów walut
+
+setInterval(function() {
+
+  fetch('http://api.nbp.pl/api/exchangerates/tables/{table}/') // Zastąp 'API_URL' rzeczywistym adresem URL API kursów walut
+
+    .then(response => response.json())
+
+    .then(data => {
+
+      // Aktualizuj kursy walut na stronie
+
+      document.getElementById('exchange-rate').innerText = data.rate;
+
+    })
+
+    .catch(error => console.error('Błąd:', error));
+
+}, 60000); // Odświeża co 60 sekund
